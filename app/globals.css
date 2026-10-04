@@ -1,1 +1,54 @@
 @import "tailwindcss";
+
+/* ===========================================================================
+   设计令牌（Tailwind v4 是 CSS-first 配置，没有 tailwind.config.js）
+   改这里的变量就能全局换配色 / 圆角；组件里直接用 bg-surface、text-ink 这类类名。
+   =========================================================================== */
+@theme {
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f5f7;
+  --color-line: #e5e7eb;
+
+  --color-ink: #16181d;
+  --color-ink-soft: #565e6c;
+  --color-ink-faint: #8b93a1;
+
+  --color-brand: #0f766e;
+  --color-brand-soft: #e7f3f1;
+
+  /* 语义色：good = 还有余量，warn = 快到了，over = 已超标 */
+  --color-good: #15803d;
+  --color-warn: #b45309;
+  --color-over: #dc2626;
+
+  --radius-card: 1rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface-2);
+    color: var(--color-ink);
+  }
+
+  /* 手机上点按不要 300ms 延迟，也不要灰色高亮块 */
+  a,
+  button,
+  [role="button"],
+  label,
+  input,
+  select {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* 输入框字号必须 >= 16px，否则 iOS Safari 聚焦时会自动放大整个页面 */
+  input,
+  select,
+  textarea {
+    font-size: 1rem;
+  }
+}

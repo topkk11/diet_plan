@@ -32,6 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# …但配置模板要进仓库：它是给人照着填的，里面只有占位符。
+# .env* 会把 .env.local.example 一起挡住，所以这里显式放行。
+!.env.local.example
+
+# 本地的密码/密钥备忘 —— 绝对不要进仓库。
+# 注意：数据库密码和公开的 publishable key 不是一回事，它能直连 Postgres 绕过全部 RLS。
+database*.txt
 
 # vercel
 .vercel
